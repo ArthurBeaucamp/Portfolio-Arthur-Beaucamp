@@ -2,6 +2,7 @@
  * Npm import
  */
 import React from 'react';
+import classNames from 'classnames';
 
 /**
  * Local import
@@ -16,19 +17,43 @@ import Home from 'src/components/Home';
 /**
  * Code
  */
-const Portfolio = () => (
-  <div id="portfolio" className="open">
-    <div id="sidebar-toggle">||</div>
-    <Sidebar />
-    <main id="main">
-      <Header />
-      <div className="container">
-        <Home />
+class Portfolio extends React.Component {
+  /*
+   * Code
+   */
+  state = {
+    open: false,
+  };
+
+  /*
+   * Actions
+   */
+  handleClick = () => {
+    this.setState({
+      open: !this.state.open,
+    });
+  }
+
+  /*
+   * Render
+   */
+  render() {
+    const { open } = this.state;
+    return (
+      <div id="portfolio" className={classNames({ open })}>
+        <div id="sidebar-toggle" onClick={this.handleClick}>||</div>
+        <Sidebar />
+        <main id="main">
+          <Header />
+          <div className="container">
+            <Home />
+          </div>
+          <Footer />
+        </main>
       </div>
-      <Footer />
-    </main>
-  </div>
-);
+    );
+  }
+}
 
 /**
  * Export
