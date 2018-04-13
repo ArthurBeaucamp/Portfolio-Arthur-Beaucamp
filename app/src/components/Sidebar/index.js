@@ -2,7 +2,8 @@
  * Npm import
  */
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 /**
  * Local import
@@ -12,17 +13,23 @@ import React from 'react';
 /**
  * Code
  */
-const Sidebar = () => (
+const Sidebar = ({ routes }) => (
   <div id="sidebar">
     <div className="sidebar-item">
       <p>Hello, this site is a React / Redux app. You can get the <a href="" className="external-link">source on GitHub</a></p>
     </div>
 
     <nav className="sidebar-nav">
-      <a href="" className="sidebar-nav-link">Home</a>
-      <a href="" className="sidebar-nav-link">Work</a>
-      <a href="" className="sidebar-nav-link">About</a>
-      <a href="" className="sidebar-nav-link">Contact</a>
+      {Object.keys(routes).map(path => (
+        <NavLink
+          key={path}
+          to={path}
+          exact
+          className="sidebar-nav-link"
+        >
+          {routes[path].nav}
+        </NavLink>
+      ))}
     </nav>
 
     <div className="sidebar-item">
@@ -32,6 +39,9 @@ const Sidebar = () => (
     </div>
   </div>
 );
+Sidebar.propTypes = {
+  routes: PropTypes.object.isRequired,
+};
 
 /**
 * Export
