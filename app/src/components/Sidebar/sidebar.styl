@@ -1,0 +1,60 @@
+@require "app/styles/charte"
+
+/*
+ * Sidebar
+ */
+#sidebar
+	@extends $transition-slide
+	position: fixed
+	color: $text-light
+	background: $bg-dark
+	z-index: 10
+	width: $sidebar-width
+	left: -($sidebar-width)
+	font-size: .9rem
+	top: 0
+	bottom: 0
+	.sidebar-item
+		padding: 1.5em
+
+/*
+ * Sidebar Toggle Button
+ */
+#sidebar-toggle
+	@extends $transition-slide
+	position: fixed
+	z-index: 10
+	line-height: 1.8
+	background: #fff
+	border-radius: 0.5em
+	padding: 0.2em 0.8em
+	font-weight: 700
+	top: 1em
+	left: 1em
+	&:hover
+		background: lighten($bg-dark, 10%)
+		color: $main-color
+
+// Transform
+.open
+	#sidebar
+	#sidebar-toggle
+		@extends $transform-slide
+
+/*
+ * Navigation
+ */
+.sidebar-nav
+	&-link
+		color: $nav-link-color
+		padding: .93em 1.5em
+		border-bottom: 1px solid $border-dark
+		display: block
+
+		&:first-child
+			border-top: 1px solid $border-dark
+
+		&:hover
+		&.active
+			background: lighten($bg-dark, 5%)
+			color: $main-color

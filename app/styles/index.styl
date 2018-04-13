@@ -1,0 +1,38 @@
+@require "app/styles/charte"
+
+body
+	font-family: Montserrat, sans-serif
+	font-weight: 300
+	line-height: 1.5
+	overflow-x: hidden
+	color: $text-color
+	background: $bg-color
+
+
+.external-link
+	color: lighten($main-color, 50%)
+	border-bottom: 1px dotted lighten($main-color, 50%)
+	&:hover
+		color: $main-color
+		border-color: $main-color
+
+.content-section
+	padding: 1em 2em
+	p
+		margin-bottom: 1em
+
+.content
+	margin: 0 auto
+	padding: 1em 20%
+
+.content-title
+	font-size: 2em
+
+.content-subtitle
+	font-size: 1.5em
+
+.container
+	font-family: "Bree Serif", serif
+
+.center
+	text-align: center
