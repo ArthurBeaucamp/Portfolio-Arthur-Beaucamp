@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import classNames from 'classnames';
+import { Route, Switch } from 'react-router-dom';
 
 /**
  * Local import
@@ -12,6 +13,7 @@ import Footer from 'src/components/Footer';
 import Sidebar from 'src/components/Sidebar';
 
 import Home from 'src/components/Home';
+import Work from 'src/components/Work';
 
 /*
  * Data routes
@@ -19,15 +21,19 @@ import Home from 'src/components/Home';
 const routes = {
   '/': {
     nav: 'Home',
+    component: Home,
   },
   '/work': {
     nav: 'Work',
+    component: Work,
   },
   '/about': {
     nav: 'About',
+    component: Home,
   },
   '/contact': {
     nav: 'Contact',
+    component: Home,
   },
 };
 
@@ -63,7 +69,17 @@ class Portfolio extends React.Component {
         <main id="main">
           <Header />
           <div className="container">
-            <Home />
+            <Switch>
+              {Object.keys(routes).map(path => (
+                <Route
+                  exact
+                  key={path}
+                  path={path}
+                  component={routes[path].component}
+                />
+              ))}
+              <Route render={() => <div>404</div>} />
+            </Switch>
           </div>
           <Footer />
         </main>
